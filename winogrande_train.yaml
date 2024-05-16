@@ -1,0 +1,17 @@
+task: winogrande_train
+dataset_path: chargoddard/winogrande-train-10k
+output_type: multiple_choice
+test_split: train
+fewshot_split: fewshot
+fewshot_config:
+  sampler: default
+doc_to_text: !function preprocess_winogrande.doc_to_text
+doc_to_target: !function preprocess_winogrande.doc_to_target
+doc_to_choice: !function preprocess_winogrande.doc_to_choice
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 1.0
+
